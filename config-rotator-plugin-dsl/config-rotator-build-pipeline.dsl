@@ -1,20 +1,21 @@
-projectName = "Config-Rotator-MBA"
+projectName = "GCE-KUBE-MDP"
 
-buildJobName = "A1.Build-${projectName}_GEN"
-staticAnalName = "B1.Static-Analysis-${projectName}_GEN"
+buildJobName = "A1.Build-${projectName}_DEV"
+staticAnalName = "B1.Check-Analysis-${projectName}_DEV"
 docName = "C1.JavaDoc-${projectName}_GEN"
-integrationTestName = "D1.IntegrationTest-${projectName}_GEN"
-releaseJobName = "E1.Release-${projectName}_GEN"
-viewName = "${projectName}-jobs_GEN"
-pipelineName = "${projectName}-pipeline_GEN"
+integrationTestName = "D1.IntegrationTest-${projectName}_DEV"
+releaseJobName = "E1.Release-${projectName}_DEV"
+viewName = "${projectName}-jobs_DEV"
+pipelineName = "${projectName}-pipeline_DEV"
 
 
 job(buildJobName) {
-//    name 'MBA - Config Rotatour - Build'
-    description 'MBA A1 Config Rotator - Build'
+//    name 'MDP - KUBE APP - Build'
+    description 'MDP A1 KUBE APP - Build'
     jdk ('1.8-LATEST')
-    label ('cc-nightcrawler')
+    label ('agent-night')
     scm {
+        // example app
         git 'https://github.com/Praqma/config-rotator-plugin.git'
     }
     triggers {
@@ -25,7 +26,9 @@ job(buildJobName) {
     }
     publishers {
         archiveJunit('target/surefire-reports/*.xml')
-        cobertura('**/coverage.xml') // TODO: Doesn't seem to work in docker jenkins - module missing?
+        cobertura('**/coverage.xml') // TODO: Doesn't seem to work in docker jenkins - module missing?.
+        // TODO: module added. Need to check
+
         downstreamParameterized {
             trigger(staticAnalName) {
                 condition('UNSTABLE_OR_BETTER') // trigger even if unstable
@@ -38,10 +41,11 @@ job(buildJobName) {
 
 
 job(staticAnalName) {
-    description 'MBA B1 Config Rotator - Static Analysis'
-    label ('cc-nightcrawler')
+    description 'MDP B1 KUBE APP - Static Analysis'
+    label ('agent-night')
     logRotator(-1,10)
     scm {
+        // example app
         git 'https://github.com/Praqma/config-rotator-plugin.git'
     }
     // Triggered by pipeline
@@ -70,8 +74,9 @@ job(staticAnalName) {
 job(docName) {
     description('Job that create the javadoc for Config Rotator Plugin')
     logRotator(-1,10)
-    label ('cc-nightcrawler')
+    label ('agent-night')
     scm {
+        // example app
         git 'https://github.com/Praqma/config-rotator-plugin.git'
     }
     steps {
@@ -92,8 +97,9 @@ job(docName) {
 
 job(integrationTestName) {
     logRotator(-1,10)
-    label ('cc-nightcrawler')
+    label ('agent-night')
     scm {
+        // example app
         git 'https://github.com/Praqma/config-rotator-plugin.git'
     }
     steps {
