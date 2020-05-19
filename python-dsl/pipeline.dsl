@@ -6,7 +6,7 @@ pipelineJob('pipeline') {
                     git {
                         remote { 
                             url ('https://gitlab.com/elesvi1/python-flask-jen.git')
-                            credentials('jenslave')
+                            credentials('gitlabuser')
                         }
                         branch '*/master'
                         extensions {}
