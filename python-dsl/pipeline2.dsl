@@ -1,5 +1,5 @@
 job('PublishDemoApp') {
-    name 'Publish-Python-Demo-App'
+    //name 'Publish-Python-Demo-App'
     description 'Python Demo App- Publish'
     label ('swarm')
     scm {
