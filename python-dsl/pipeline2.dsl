@@ -17,7 +17,7 @@ job('PublishDemoApp') {
     }
     steps {
         shell("""echo Hello World!
-        export KUBECONFIG=$KUBECONG
+        export KUBECONFIG=$KUBECONF
         kubectl get pods"""
         )
     }
