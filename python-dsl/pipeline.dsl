@@ -1,7 +1,4 @@
 pipelineJob('pipeline') {
-    parameters {
-        labelParam('swarm')
-    }
           definition {
               cpsScm {
                   scriptPath 'Jenkinsfile'
