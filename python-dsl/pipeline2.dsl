@@ -24,7 +24,7 @@ job('PublishDemoApp') {
     steps {
         shell(BASE_STEPS)
     }
-    publishers {
-        archiveJunit('target/*.xml')
-    }
+    //publishers {
+    //    archiveJunit('target/*.xml')
+    //}
 }
