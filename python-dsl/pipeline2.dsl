@@ -8,6 +8,15 @@ job('PublishDemoApp') {
     //name 'Publish-Python-Demo-App'
     //description 'Python Demo App- Publish'
     label ('swarm')
+    parameters {
+        credentialsParam('KUBECONF') {
+            type('org.jenkinsci.plugins.plaincredentials.impl.FileCredentialsImpl')
+            required()
+            defaultValue('gke-gre3-01-usercluster02-kubeconfig')
+            description('Key for deploying build artifacts')
+        }
+    }
+    
     scm {
       git {
         remote { 
@@ -21,7 +30,7 @@ job('PublishDemoApp') {
     triggers {
         scm('*/2 * * * *')
     }
-
+    
     logRotator {
     numToKeep(50)
     artifactNumToKeep(50)
