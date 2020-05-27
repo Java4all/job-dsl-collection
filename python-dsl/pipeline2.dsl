@@ -21,6 +21,12 @@ job('PublishDemoApp') {
     triggers {
         scm('*/2 * * * *')
     }
+
+    logRotator {
+    numToKeep(50)
+    artifactNumToKeep(50)
+    }
+
     steps {
         shell(BASE_STEPS)
     }
