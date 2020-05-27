@@ -8,15 +8,13 @@ job('PublishDemoApp') {
     //name 'Publish-Python-Demo-App'
     //description 'Python Demo App- Publish'
     label ('swarm')
-    parameters {
-        credentialsParam('KUBECONF') {
-            type('org.jenkinsci.plugins.plaincredentials.impl.FileCredentialsImpl')
-            required()
-            defaultValue('gke-gre3-01-usercluster02-kubeconfig')
-            description('Key for deploying build artifacts')
-        }
-    }
-    
+
+    wrappers {
+     credentialsBinding {
+       file('gke-gre3-01-usercluster02-kubeconfig', 'KUBECONF')
+     }
+  }
+
     scm {
       git {
         remote { 
@@ -37,7 +35,8 @@ job('PublishDemoApp') {
     }
 
     steps {
-        shell(BASE_STEPS)
+        shell('pwd'+
+        'echo $KUBECONF')
     }
     //publishers {
     //    archiveJunit('target/*.xml')
