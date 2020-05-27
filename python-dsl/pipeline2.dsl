@@ -1,3 +1,9 @@
+BASE_STEPS = '''#!/bin/bash
+echo Hello World!
+pwd
+kubectl get pods
+'''
+
 job('PublishDemoApp') {
     //name 'Publish-Python-Demo-App'
     //description 'Python Demo App- Publish'
@@ -16,10 +22,7 @@ job('PublishDemoApp') {
         scm('*/2 * * * *')
     }
     steps {
-        shell("""echo Hello World!
-        export KUBECONFIG=$gitlabuser
-        kubectl get pods"""
-        )
+        shell(BASE_STEPS)
     }
     publishers {
         archiveJunit('target/*.xml')
