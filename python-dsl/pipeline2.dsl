@@ -16,7 +16,9 @@ job('PublishDemoApp') {
         scm('*/2 * * * *')
     }
     steps {
-        shell('echo Hello World!'
+        shell("""echo Hello World!
+        export KUBECONFIG=$KUBECONG
+        kubectl get pods"""
         )
     }
     publishers {
