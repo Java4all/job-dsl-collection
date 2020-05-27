@@ -1,4 +1,4 @@
-pipelineJob('pipeline') {
+pipelineJob('Build Python Demo App') {
           definition {
               cpsScm {
                   scriptPath 'Jenkinsfile'
