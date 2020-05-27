@@ -1,7 +1,7 @@
 pipelineJob('Publish Python Demo App') {
           definition {
               cpsScm {
-                  scriptPath 'Jenkinsfile'
+                  scriptPath 'Jenkinsfile2'
                   scm {
                     git {
                         remote { 
