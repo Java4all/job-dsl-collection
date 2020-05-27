@@ -16,7 +16,8 @@ job('PublishDemoApp') {
         scm('*/2 * * * *')
     }
     steps {
-        shell('echo Hello World!')
+        shell('echo Hello World!'
+        )
     }
     publishers {
         archiveJunit('target/*.xml')
