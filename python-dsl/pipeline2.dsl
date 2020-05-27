@@ -1,4 +1,4 @@
-job(PublishDemoApp) {
+job('PublishDemoApp') {
     name 'Publish-Python-Demo-App'
     description 'Python Demo App- Publish'
     label ('swarm')
