@@ -20,7 +20,5 @@ job('PublishDemoApp') {
     }
     publishers {
         archiveJunit('target/*.xml')
-        cobertura('**/coverage.xml') // TODO: Doesn't seem to work in docker jenkins - module missing?.
-        // TODO: module added. Need to check   
     }
 }
