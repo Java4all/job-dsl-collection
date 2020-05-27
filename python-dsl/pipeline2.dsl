@@ -1,6 +1,9 @@
 BASE_STEPS = '''#!/bin/bash
 echo Hello World!
 pwd
+ls
+echo "KUBECONF is $KUBECONF"
+echo "Another is $gke-gre3-01-usercluster02-kubeconfig"
 kubectl get pods
 '''
 
@@ -35,8 +38,7 @@ job('PublishDemoApp') {
     }
 
     steps {
-        shell('pwd'+
-        'echo $KUBECONF')
+        shell(BASE_STEPS)
     }
     //publishers {
     //    archiveJunit('target/*.xml')
