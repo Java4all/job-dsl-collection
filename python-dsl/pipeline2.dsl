@@ -1,10 +1,11 @@
 BASE_STEPS = '''#!/bin/bash
-echo Hello World!
-pwd
-ls
 echo "KUBECONF is $KUBECONF"
-echo "Another is $gke-gre3-01-usercluster02-kubeconfig"
-kubectl get pods
+terraform --version
+sudo chmod 755 /bin/kubectl
+export https_proxy='http://192.168.255.12:8080/'
+export http_proxy='http://192.168.255.12:8080/'
+export no_proxy='http://172.16.13.123/,.jcasc.svc.cluster.local,10.245.0.0/16'
+kubectl --kubeconfig=$KUBECONF get pods
 '''
 
 job('PublishDemoApp') {
