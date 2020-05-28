@@ -15,7 +15,7 @@ job('PublishDemoApp') {
 
     wrappers {
      credentialsBinding {
-       file('KUBECONFVAR','gke-gre3-01-usercluster02-kubeconfig')
+       file('KUBECONFVAR','KUBECONF')
      }
      colorizeOutput()
      timestamps()
