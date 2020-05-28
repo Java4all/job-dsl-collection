@@ -5,7 +5,7 @@ sudo chmod 755 /bin/kubectl
 export https_proxy='http://192.168.255.12:8080/'
 export http_proxy='http://192.168.255.12:8080/'
 export no_proxy='http://172.16.13.123/,.jcasc.svc.cluster.local,10.245.0.0/16'
-kubectl --kubeconfig=$KUBECONFVAR get pods
+kubectl --kubeconfig=$HOME/kubeconf get pods
 '''
 
 job('PublishDemoApp') {
