@@ -20,14 +20,6 @@ teeraform apply -auto-approve
 job('Create Google Bucket over Terraform') {
     label ('swarm')
 
-    wrappers {
-     credentialsBinding {
-       file('CRFILEVAR','CRFILE')
-     }
-     colorizeOutput()
-     timestamps()
-  }
-
     scm {
       git {
         remote { 
