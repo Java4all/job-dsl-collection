@@ -12,7 +12,7 @@ terraform init
 ### terraform plan
 terraform plan
 ### terraform apply
-teeraform apply -auto-approve
+terraform apply -auto-approve
 
 
 '''
