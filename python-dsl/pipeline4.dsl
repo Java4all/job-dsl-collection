@@ -16,7 +16,7 @@ terraform destroy -auto-approve
 
 '''
 
-job('Create Google Bucket over Terraform') {
+job('Delete Google Bucket over Terraform') {
     label ('swarm')
     
     logRotator {
